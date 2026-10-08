@@ -293,11 +293,12 @@ la dicha de amarte para siempre en el cielo.
           applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
         });
 
-        const res = await fetch('/.netlify/functions/suscribir', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(sub)
-        });
+// Ahora (Vercel):
+const res = await fetch('/api/suscribir', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(sub)
+});
 
         if (res.ok) {
           estado.innerText = '✅ ¡Avisos activados con éxito!';
