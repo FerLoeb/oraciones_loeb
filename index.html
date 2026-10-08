@@ -307,13 +307,12 @@ la dicha de amarte para siempre en el cielo.
         });
 
         if (res.ok) {
-          const respuesta = await res.json();
           estado.innerText = '✅ ¡Copia este texto y pégalo en Vercel!';
           btn.style.display = 'none';
 
-          // Cuadro de texto para copiar desde el móvil
           const caja = document.createElement('textarea');
-          caja.value = respuesta.suscripcionTexto;
+          // Leemos directamente del objeto sub que generó el navegador:
+          caja.value = JSON.stringify(sub);
           caja.style.width = '100%';
           caja.style.height = '150px';
           document.body.appendChild(caja);
