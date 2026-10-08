@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <title>Mis Oraciones Diarias</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #0f172a;
+    }
+
+    /* Botón de activación */
+    .btn-notif {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 20px;
+      transition: background 0.2s ease;
+    }
+    .btn-notif:hover {
+      background: #1d4ed8;
+    }
+
+    #estado {
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    /* Desplegables de oraciones */
+    details {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+    }
+
+    details[open] {
+      border-color: #93c5fd;
+      box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+    }
+
+    summary {
+      padding: 16px 20px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "➕";
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+
+    details[open] summary::after {
+      content: "➖";
+    }
+
+    .contenido-oracion {
+      padding: 0 20px 20px 20px;
+      color: #334155;
+      font-size: 1rem;
+      white-space: pre-line;
+      border-top: 1px solid #f1f5f9;
+      margin-top: 8px;
+    }
+
+    .enlace-externo {
+      display: inline-block;
+      margin-top: 10px;
+      color: #2563eb;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Oraciones y Rutina</h1>
+
+  <button id="btn-activar" class="btn-notif">🔔 Activar avisos diarios</button>
+  <p id="estado"></p>
+
+  <!-- Oración 1: Ángelus -->
+  <details id="angelus">
+    <summary>El Ángelus</summary>
+    <div class="contenido-oracion">
+      V. El Ángel del Señor anunció a María.
+      R. Y concibió por obra del Espíritu Santo.
+      (Dios te salve, María...)
+
+      V. He aquí la esclava del Señor.
+      R. Hágase en mí según tu palabra.
+      (Dios te salve, María...)
+
+      V. Y el Verbo se hizo carne.
+      R. Y habitó entre nosotros.
+      (Dios te salve, María...)
+
+      V. Ruega por nosotros, Santa Madre de Dios.
+      R. Para que seamos dignos de alcanzar las promesas de Jesucristo.
+
+      Oremos: Te suplicamos, Señor, que derrames tu gracia en nuestros corazones, para que cuántos por el anuncio del Ángel, hemos conocido la Encarnación de tu Hijo, Jesucristo, por su Pasión y Cruz lleguemos a la Gloria de su Resurrección. 
+Por Jesucristo Nuestro Señor. Amén.
+
+Gloria al Padre y al Hijo y al Espíritu Santo.
+Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén (x3)
+    </div>
+  </details>
+
+  <!-- Oración 2: Oración del Pringado -->
+  <details id="pringado">
+    <summary>Oración del Pringado</summary>
+    <div class="contenido-oracion">
+      Yo me entrego a ti, mi buen Dios, porque quiero pringarme por tu Iglesia siguiendo, junto a los demás miembros, en comunión con ellos, el estilo de vida de Hakuna.
+
+Señor, me arrodillaré ante ti en la Hostia,
+danos una vida de rodillas ante el misterio y ante cada rostro.
+
+Señor, me abriré a los alejados,
+contágianos Tú la pasión por que no se pierda ninguno.
+
+Señor, te buscaré vivo en el Evangelio, liturgia y sacramentos,
+muéstrate como nuestro pobre loco.
+
+Señor, sonreiré y miraré a los ojos,
+recuérdanos que no hemos venido a criticar ni a juzgar sino a salvar.
+
+Señor, abrazaré cada realidad con la no-medida de la cruz,
+devuélvenos la unidad, y transfigura ya nuestra carne.
+
+Señor, iré a las fiestas buscando que sean momentos de Vida,
+haz que te encontremos sufriente en los sedientos de placer.
+
+Señor, agradeceré tu confianza cada nuevo día,
+que un profundo sentido de tu presencia haga de cada día una fiesta.
+
+María, madre de Hakuna,
+que contigo solo sepamos decirle "Sí", que vivamos de rodillas,
+abrazados y abrazando, con alegre cara de resucitados,
+y recuérdanos rezar todos los días, todos por todos.
+
+    </div>
+  </details>
+
+  <!-- Oración 3: Oración de los Solteros -->
+  <details id="solteros">
+    <summary>Oración de los Solteros</summary>
+    <div class="contenido-oracion">
+      Señor, pongo ahora en tus manos
+a la persona de la que algún día me enamoraré,
+con quien compartiré mi vida entera.
+Te pido que la bendigas, la cuides y la ayudes.
+
+Donde quiera que ande,
+bendice su camino, conserva su ánimo, guía sus pasos,
+fortalece su corazón y muéstrale tu misericordia.
+No permitas que nada dañe su capacidad de amar.
+Aunque muy probablemente no la conozco todavía
+llénala de alegría y hazla generosa.
+
+A mí, ayúdame a ser mejor para hacerme
+más digno de estar a su lado;
+que sepa esperar hasta el día en que la conozca,
+que me prepare aprendiendo a amar a cada uno
+como necesita ser amado.
+
+Educa mi corazón para amar desinteresadamente.
+Que viva ahora el misterio de la sexualidad
+como merece ser vivido.
+Durante este tiempo de espera ayúdame a
+capacitarme para amar al cien por cien.
+
+Bendícenos y llénanos de amor.
+Quiero vivir ya para él/ella; por eso,
+si no te importa, haz que la conozca pronto.
+    </div>
+  </details>
+
+  <!-- Oración 4: Maravilla del día -->
+  <details id="estudiante">
+    <summary>Estudiante</summary>
+    <div class="contenido-oracion">
+      Madre mía Inmaculada,
+que por haber recibido en tu seno el verbo de Dios,
+eres Trono de la Gloria y de la Sabiduría,
+alcánzame la gracia de estudiar con orden y constancia,
+con pureza de intención y afán de servicio.
+
+Haz que mi trabajo me acerque cada día
+más a ti y a tu divino hijo;
+que nunca me olvide de ofrecérselo,
+como ahora lo hago, para que mis horas de estudio sean,
+de verdad, horas de oración.
+
+Ayúdame también a lograr el fruto humano y sobrenatural
+que Dios espera de mi estudio,
+para que sacrificándome en el trabajo alcance
+la dicha de amarte para siempre en el cielo.
+    </div>
+  </details>
+
+  <!-- Otras oraciones (puedes duplicar este bloque para añadir más) -->
+  <details id="otras">
+    <summary>Otras Oraciones</summary>
+    <div class="contenido-oracion">
+      Espacio reservado para las futuras oraciones que quieras incorporar.
+    </div>
+  </details>
+
+  <script>
+    // 1. Abrir automáticamente la oración si la URL contiene su ID (ej: #angelus)
+    function abrirSegunHash() {
+      const hash = window.location.hash;
+      if (hash) {
+        const elemento = document.querySelector(hash);
+        if (elemento && elemento.tagName === 'DETAILS') {
+          elemento.open = true;
+          elemento.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+
+    window.addEventListener('load', abrirSegunHash);
+    window.addEventListener('hashchange', abrirSegunHash);
+
+    // 2. Registro de notificaciones Web Push
+    const PUBLIC_VAPID_KEY = 'PEGA_AQUI_TU_VAPID_PUBLIC_KEY';
+
+    function urlBase64ToUint8Array(base64String) {
+      const padding = '='.repeat((4 - base64String.length % 4) % 4);
+      const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+      const rawData = window.atob(base64);
+      const outputArray = new Uint8Array(rawData.length);
+      for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+      }
+      return outputArray;
+    }
+
+    const btn = document.getElementById('btn-activar');
+    const estado = document.getElementById('estado');
+
+    btn.addEventListener('click', async () => {
+      try {
+        if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+          alert('Tu navegador no soporta notificaciones push.');
+          return;
+        }
+
+        const permiso = await Notification.requestPermission();
+        if (permiso !== 'granted') {
+          alert('Permiso no concedido.');
+          return;
+        }
+
+        const reg = await navigator.serviceWorker.register('/sw.js');
+        const sub = await reg.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
+        });
+
+// Ahora (Vercel):
+const res = await fetch('/api/suscribir', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(sub)
+});
+
+        if (res.ok) {
+          estado.innerText = '✅ ¡Avisos activados con éxito!';
+          btn.style.display = 'none';
+        }
+      } catch (err) {
+        console.error(err);
+        estado.innerText = '⚠️ Error: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
