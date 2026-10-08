@@ -210,7 +210,7 @@ si no te importa, haz que la conozca pronto.
     </div>
   </details>
 
-  <!-- Oración 4: Maravilla del día -->
+  <!-- Oración 4: Estudiante -->
   <details id="estudiante">
     <summary>Estudiante</summary>
     <div class="contenido-oracion">
@@ -233,7 +233,7 @@ la dicha de amarte para siempre en el cielo.
     </div>
   </details>
 
-  <!-- Otras oraciones (puedes duplicar este bloque para añadir más) -->
+  <!-- Otras oraciones -->
   <details id="otras">
     <summary>Otras Oraciones</summary>
     <div class="contenido-oracion">
@@ -287,22 +287,30 @@ la dicha de amarte para siempre en el cielo.
           return;
         }
 
-        const reg = await navigator.serviceWorker.register('/sw.js');
+        // 1. Registramos el service worker
+        await navigator.serviceWorker.register('/sw.js');
+
+        // 2. Esperamos a que esté activo
+        const reg = await navigator.serviceWorker.ready;
+
+        // 3. Suscripción push
         const sub = await reg.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
         });
 
-// Ahora (Vercel):
-const res = await fetch('/api/suscribir', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(sub)
-});
+        // 4. Guardar suscripción en Vercel
+        const res = await fetch('/api/suscribir', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sub)
+        });
 
         if (res.ok) {
           estado.innerText = '✅ ¡Avisos activados con éxito!';
           btn.style.display = 'none';
+        } else {
+          estado.innerText = '⚠️ Error al guardar suscripción en Vercel.';
         }
       } catch (err) {
         console.error(err);
