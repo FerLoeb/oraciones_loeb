@@ -1,30 +1,25 @@
-import { kv } from '@vercel/kv';
 import webpush from 'web-push';
 
 export async function enviarRecordatorio(titulo, mensaje, urlDestino) {
   webpush.setVapidDetails(
-    'mailto:frdloeb@gmail.com',
+    'mailto:contacto@tudominio.com', // tu email
     process.env.VAPID_PUBLIC_KEY,
     process.env.VAPID_PRIVATE_KEY
   );
 
-  const keys = await kv.keys('sub:*');
   const payload = JSON.stringify({
     title: titulo,
     body: mensaje,
     url: urlDestino
   });
 
-  for (const key of keys) {
-    const sub = await kv.get(key);
-    if (sub) {
-      try {
-        await webpush.sendNotification(sub, payload);
-      } catch (err) {
-        if (err.statusCode === 404 || err.statusCode === 410) {
-          await kv.del(key);
-        }
-      }
+  // Si tienes tu suscripción configurada en Vercel
+  if (process.env.MI_SUSCRIPCION) {
+    try {
+      const sub = JSON.parse(process.env.MI_SUSCRIPCION);
+      await webpush.sendNotification(sub, payload);
+    } catch (err) {
+      console.error("Error al enviar push:", err);
     }
   }
 }
